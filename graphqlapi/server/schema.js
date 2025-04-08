@@ -4,6 +4,7 @@ module.exports = gql`
 type Query {
     movies: [Movie],
     movieById(_id: ID!): Movie,
+    getDadJoke: Joke,
 }
 type Movie {
     _id: ID!,
@@ -12,5 +13,10 @@ type Movie {
     fullplot: String,
     genres: [String],
     countries: [String],
+    joke: Joke,
+}
+type Joke {
+    id: ID!,
+    joke: String,
 }
 `;
