@@ -1,0 +1,109 @@
+[
+    {
+        "_id": "573a1390f29313caabcd4135",
+        "plot": "Three men hammer on an anvil and pass a bottle of beer around.",
+        "genres": [
+            "Short"
+        ],
+        "runtime": 1,
+        "cast": [
+            "Charles Kayser",
+            "John Ott"
+        ],
+        "num_mflix_comments": 0,
+        "title": "Blacksmith Scene",
+        "fullplot": "A stationary camera looks at a large anvil with a blacksmith behind it and one on either side. The smith in the middle draws a heated metal rod from the fire, places it on the anvil, and all three begin a rhythmic hammering. After several blows, the metal goes back in the fire. One smith pulls out a bottle of beer, and they each take a swig. Then, out comes the glowing metal and the hammering resumes.",
+        "countries": [
+            "USA"
+        ],
+        "released": -2418768000000,
+        "directors": [
+            "William K.L. Dickson"
+        ],
+        "rated": "UNRATED",
+        "awards": {
+            "wins": 1,
+            "nominations": 0,
+            "text": "1 win."
+        },
+        "lastupdated": "2015-08-26 00:03:50.133000000",
+        "year": 1893,
+        "imdb": {
+            "rating": 6.2,
+            "votes": 1189,
+            "id": 5
+        },
+        "type": "movie",
+        "tomatoes": {
+            "viewer": {
+                "rating": 3.0,
+                "numReviews": 184,
+                "meter": 32
+            },
+            "lastUpdated": 1435516449000
+        }
+    },
+    {
+        "_id": "573a1390f29313caabcd5967",
+        "plot": "An intrepid reporter and his loyal friend battle a bizarre secret society of criminals known as The Vampires.",
+        "genres": [
+            "Action",
+            "Adventure",
+            "Crime"
+        ],
+        "runtime": 399,
+        "rated": "NOT RATED",
+        "cast": [
+            "Musidora",
+            "èdouard Mathè",
+            "Marcel Lèvesque",
+            "Jean Aymè"
+        ],
+        "poster": "https://m.media-amazon.com/images/M/MV5BMTc1NTY3NDIzNl5BMl5BanBnXkFtZTgwNTIyODg5MTE@._V1_SY1000_SX677_AL_.jpg",
+        "title": "Les vampires",
+        "fullplot": "An intrepid reporter and his loyal friend battle a bizarre secret society of criminals known as The Vampires.",
+        "languages": [
+            "French"
+        ],
+        "released": -1675900800000,
+        "directors": [
+            "Louis Feuillade"
+        ],
+        "writers": [
+            "Louis Feuillade"
+        ],
+        "awards": {
+            "wins": 0,
+            "nominations": 1,
+            "text": "1 nomination."
+        },
+        "lastupdated": "2015-09-02 00:24:27.333000000",
+        "year": 1915,
+        "imdb": {
+            "rating": 6.8,
+            "votes": 2878,
+            "id": 6206
+        },
+        "countries": [
+            "France"
+        ],
+        "type": "movie",
+        "tomatoes": {
+            "viewer": {
+                "rating": 3.8,
+                "numReviews": 2118,
+                "meter": 82
+            },
+            "dvd": 958435200000,
+            "critic": {
+                "rating": 8.8,
+                "numReviews": 13,
+                "meter": 100
+            },
+            "lastUpdated": 1442336553000,
+            "rotten": 0,
+            "fresh": 13
+        },
+        "num_mflix_comments": 0
+    }
+]
