@@ -1,4 +1,6 @@
 const { RESTDataSource } = require('apollo-datasource-rest');
+const { ApolloError } = require('apollo-server');
+const { v4: uuidv4 } = require('uuid');
 
 class JokesAPI extends RESTDataSource {
     constructor() {
@@ -7,8 +9,15 @@ class JokesAPI extends RESTDataSource {
     }
 
     async getDadJoke() {
-        const data = await this.get('/');
-        return data;
+        try {
+            const data = await this.get('/', { }, { timeout: 5000 });
+            return data;
+        } catch (e) {
+            console.error('Did not get the joke!', e);
+            return new ApolloError('Unable to fetch jokes.', '500', {
+                requestId: uuidv4(),
+            })
+        }
     }
 
     /*
