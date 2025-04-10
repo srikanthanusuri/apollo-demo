@@ -1,26 +1,45 @@
-import { useQuery } from "@apollo/client/react/hooks";
+import { useQuery, useMutation } from "@apollo/client/react/hooks";
 import { gql } from "graphql-tag";
+import { useEffect, useState } from "react";
 
 const movies = gql`
 query MovieById($id: ID!) {
   movieById(_id: $id) {
+    _id
     title
     plot
     fullplot
     genres
     countries
+    favorite
   }
 }
 `;
 
-function renderCard(movie) {
+const toggleFavorite = gql`
+mutation Mutation($id: ID) {
+  toggleFavoriteMovie(id: $id) {
+    title
+    favorite
+    fullplot
+    plot
+    countries
+    genres
+    _id
+  }
+}
+`;
+
+function renderCard(movie, toggle) {
     return (<div key={movie._id} style={{margin: '1rem 0.25rem'}}>
         <div>Id: {movie._id}</div>
         <div>Title: {movie.title}</div>
         <div>Plot: {movie.plot}</div>
         <div>Full Plot: {movie.fullplot}</div>
+        <div>Favorite: {!!movie.favorite ? 'Yes' : 'No'}</div>
         <div>Genres: {movie.genres?.join(',')}</div>
         <div>Countries: {movie.countries?.join(',')}</div>
+        <div><button onClick={() => toggle(movie._id)}>Toggle Favorite</button></div>
     </div>);
 }
 
@@ -30,11 +49,37 @@ export default function MovieList () {
             id: "573a1390f29313caabcd4135"
         }
     });
+
+    const [doToggle, { data: updated, called, error: mutationError }] = useMutation(toggleFavorite);
+
+    const [res, setRes] = useState();
+
+    useEffect(() => {
+        console.log('data', data);
+        setRes(data);
+    }, [data]);
+
+    useEffect(() => {
+        console.log('updated', updated);
+        setRes(updated);
+    }, [updated]);
+
+    const toggle = (id) => {
+        doToggle({
+            variables: {
+                id
+            }
+        })
+    };
+
     return (
         <div>
             { error && <>{JSON.stringify(error)}</>}
-            {loading ? <>Loading movies...</> : data?.movies?.map(renderCard)}
-            { data?.movieById && <>{renderCard(data.movieById)}</> }
+            { mutationError && <>{JSON.stringify(mutationError)}</>}
+            { loading ? <>Loading movies...</> : res?.movies?.map((m) => renderCard(m,toggle))}
+            { res?.movieById && <>{renderCard(res.movieById, toggle)}</> }
+            { res?.toggleFavoriteMovie && <>{renderCard(res.toggleFavoriteMovie, toggle)}</> }
+            { called && <>Updated the movie!</> }
         </div>
     );
 }
