@@ -25,14 +25,15 @@ function renderCard(movie) {
 }
 
 export default function MovieList () {
-    const {loading, data} = useQuery(movies, {
+    const {loading, data, error} = useQuery(movies, {
         variables: {
             id: "573a1390f29313caabcd4135"
         }
     });
     return (
         <div>
-            {loading ? <>Loading movies...</> : data.movies?.map(renderCard)}
+            { error && <>{JSON.stringify(error)}</>}
+            {loading ? <>Loading movies...</> : data?.movies?.map(renderCard)}
             { data?.movieById && <>{renderCard(data.movieById)}</> }
         </div>
     );
