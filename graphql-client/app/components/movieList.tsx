@@ -33,7 +33,7 @@ export default function MovieList () {
     return (
         <div>
             {loading ? <>Loading movies...</> : data.movies?.map(renderCard)}
-            { data.movieById && <>{renderCard(data.movieById)}</> }
+            { data?.movieById && <>{renderCard(data.movieById)}</> }
         </div>
     );
 }
