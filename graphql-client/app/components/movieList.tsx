@@ -44,23 +44,36 @@ function renderCard(movie, toggle) {
 }
 
 export default function MovieList () {
+    const updateMovies = (cache, { data }) => {
+        cache.modify({
+            id: data._id,
+            fields: {
+                movieById(existingMovie = {}) {
+                    const updatedMovie = data.toggleFavoriteMovie;
+                    console.log('updated movie', updatedMovie);
+                    return {...existingMovie, ...updatedMovie};
+                }
+            }
+        });
+    };
+
     const {loading, data, error} = useQuery(movies, {
         variables: {
             id: "573a1390f29313caabcd4135"
         }
     });
 
-    const [doToggle, { data: updated, called, error: mutationError }] = useMutation(toggleFavorite);
+    const [doToggle, { data: updated, called, error: mutationError }] = useMutation(toggleFavorite, {
+        update: updateMovies
+    });
 
     const [res, setRes] = useState();
 
     useEffect(() => {
-        console.log('data', data);
         setRes(data);
     }, [data]);
 
     useEffect(() => {
-        console.log('updated', updated);
         setRes(updated);
     }, [updated]);
 
