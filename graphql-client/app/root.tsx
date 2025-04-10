@@ -7,8 +7,16 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import { ApolloProvider } from "@apollo/client";
-import { client } from "./init";
+import { ApolloProvider } from "@apollo/client/react/context";
+import { ApolloClient, InMemoryCache } from "@apollo/client/core/core.cjs";
+import { HttpLink } from "@apollo/client/link/http/http.cjs";
+const client = new ApolloClient({
+    link: new HttpLink({
+        uri: "http://localhost:4000",
+    }),
+    cache: new InMemoryCache(),
+    credentials: "same-origin"
+})
 
 import type { Route } from "./+types/root";
 import "./app.css";
